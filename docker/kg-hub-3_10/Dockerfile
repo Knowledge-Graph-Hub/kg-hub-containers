@@ -28,3 +28,5 @@ RUN DEBIAN_FRONTEND=noninteractive \
   && su jenkinsuser \
   && pip3 install awscli boto3 kgx multi-indexer oaklib pystache s3cmd
   && curl -sSL https://install.python-poetry.org | python3 -
+  && curl https://sdk.cloud.google.com | bash -s -- --install-dir=/root --disable-prompts
+  && echo 'export PATH=$PATH:/root/google-cloud-sdk/bin' >> /home/jenkinsuser/.bashrc
