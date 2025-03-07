@@ -9,7 +9,7 @@ ENV THIS_ENV=${THIS_ENV} \
   POETRY_NO_INTERACTION=1 \
   # POETRY_VIRTUALENVS_CREATE=false \
   POETRY_CACHE_DIR='/var/cache/pypoetry' \
-  POETRY_HOME='/usr/local' \
+  POETRY_HOME='/usr/local'
 
 RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf.d/00-docker
 
@@ -26,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
   && rm -rf /var/lib/apt/lists/* \
   && useradd -u 114 -ms /bin/bash jenkinsuser \
   && su jenkinsuser \
-  && pip3 install awscli boto3 kgx multi-indexer oaklib pystache s3cmd
-  && curl -sSL https://install.python-poetry.org | python3 -
-  && curl https://sdk.cloud.google.com | bash -s -- --install-dir=/root --disable-prompts
+  && pip3 install awscli boto3 kgx multi-indexer oaklib pystache s3cmd \
+  && curl -sSL https://install.python-poetry.org | python3 - \
+  && curl https://sdk.cloud.google.com | bash -s -- --install-dir=/root --disable-prompts \
   && echo 'export PATH=$PATH:/root/google-cloud-sdk/bin' >> /home/jenkinsuser/.bashrc
