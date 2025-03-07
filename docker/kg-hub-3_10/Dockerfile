@@ -4,6 +4,9 @@ RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf.d/00-docker
 
 RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf.d/00-docker
 
+## Install dependencies for KG-Hub builds
+## including setup for Jenkins builds
+## and Poetry
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update \
   && apt-get install -qyy build-essential curl wget tmux byobu htop musl-tools binutils \
@@ -13,3 +16,4 @@ RUN DEBIAN_FRONTEND=noninteractive \
   && useradd -u 114 -ms /bin/bash jenkinsuser \
   && su jenkinsuser \
   && pip3 install awscli boto3 kgx multi-indexer oaklib pystache s3cmd
+  && curl -sSL https://install.python-poetry.org | python3 -
