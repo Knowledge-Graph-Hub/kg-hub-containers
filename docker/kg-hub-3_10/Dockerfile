@@ -22,7 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update \
   && apt-get install -qyy build-essential curl wget tmux byobu htop musl-tools binutils \
   && apt-get install -y curl git maven emacs nano software-properties-common \
-  && apt-get install -y python3 python3.10-venv python3-pip python3-dev \
+  && apt-get install -y python3 python3.10-venv python3-pip python3-dev python3-setuptools>=61 \
   && rm -rf /var/lib/apt/lists/* \
   && useradd -u 114 -ms /bin/bash jenkinsuser \
   && su jenkinsuser \
